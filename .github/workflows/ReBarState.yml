@@ -1,4 +1,4 @@
-name: ReBarState CMake
+name: NvStrapsReBar CMake
 
 on:
   push:
@@ -34,8 +34,8 @@ jobs:
     - name: Upload Ubuntu artifact
       uses: actions/upload-artifact@master
       with:
-        name: ReBarState Linux
-        path: ${{github.workspace}}/build/ReBarState
+        name: NvStrapsReBar Linux
+        path: ${{github.workspace}}/build/NvStrapsReBar
 
   rebarstate-windows:
     # The CMake configure and build commands are platform agnostic and should work equally well on Windows or Mac.
@@ -60,6 +60,6 @@ jobs:
     - name: Upload Windows artifact
       uses: actions/upload-artifact@master
       with:
-        name: ReBarState Windows
-        path: ${{github.workspace}}/build/Release/ReBarState.exe
+        name: NvStrapsReBar Windows
+        path: ${{github.workspace}}/build/Release/NvStrapsReBar.exe
 

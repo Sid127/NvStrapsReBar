@@ -1,4 +1,4 @@
-name: ReBarDxe EDK2
+name: NvStrapsReBar EDK2
 
 on:
   push:
@@ -10,7 +10,7 @@ env:
   TARGET_ARCH: X64
 
 jobs:
-  rebardxe-windows:
+  NvStrapsReBar-windows:
     runs-on: windows-2019
 
     env:
@@ -48,25 +48,25 @@ jobs:
         ref: 'edk2-stable202208'
         submodules: 'recursive'
 
-    - name: Download RebarUEFI
+    - name: Download NvStrapsReBar
       uses: actions/checkout@v3
       with:
-        path: '.\ReBarUEFI\'
+        path: '.\NvStrapsReBar\'
 
     - name: Setup EDK2
       run: .\edksetup.bat Rebuild
 
-    - name: Build RebarDxe
-      run: .\ReBarUEFI\.github\workflows\buildffs.bat
+    - name: Build NvStrapsReBar
+      run: .\NvStrapsReBar\.github\workflows\buildffs.bat
 
-    - name: Upload ReBarDxe artifact
+    - name: Upload NvStrapsReBar artifact
       uses: actions/upload-artifact@master
       with:
-        name: ReBarDxe (built on Windows)
-        path: ${{github.workspace}}/Build/ReBarUEFI/RELEASE_VS2019/X64/ReBarDxe.ffs
+        name: NvStrapsReBar (built on Windows)
+        path: ${{github.workspace}}/Build/NvStrapsReBar/RELEASE_VS2019/X64/NvStrapsReBar.ffs
 
 
-  rebardxe-linux:
+  NvStrapsReBar-linux:
     runs-on: ubuntu-22.04
 
     env:
@@ -84,10 +84,10 @@ jobs:
         submodules: 'recursive'
         path: '.'
 
-    - name: Download RebarUEFI
+    - name: Download NvStrapsReBar
       uses: actions/checkout@v3
       with:
-        path: './ReBarUEFI/'
+        path: './NvStrapsReBar/'
 
     - name: Install dependencies
       run: sudo apt install build-essential uuid-dev iasl git nasm  python-is-python3
@@ -98,11 +98,11 @@ jobs:
     - name: Setup EDK2
       run: bash -c "source edksetup.sh"
 
-    - name: Build RebarDxe
-      run: ./ReBarUEFI/.github/workflows/buildffs.sh
+    - name: Build NvStrapsReBar
+      run: ./NvStrapsReBar/.github/workflows/buildffs.sh
 
-    - name: Upload ReBarDxe artifact
+    - name: Upload NvStrapsReBar artifact
       uses: actions/upload-artifact@master
       with:
-        name: ReBarDxe (built on Linux)
-        path: ${{github.workspace}}/Build/ReBarUEFI/RELEASE_GCC5/X64/ReBarDxe.ffs
+        name: NvStrapsReBar (built on Linux)
+        path: ${{github.workspace}}/Build/NvStrapsReBar/RELEASE_GCC5/X64/NvStrapsReBar.ffs

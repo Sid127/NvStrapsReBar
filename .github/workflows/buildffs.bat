@@ -1,2 +1,2 @@
 @echo off
-.\edksetup.bat && python .\ReBarUEFI\ReBarDxe\buildffs.py RELEASE B
+.\edksetup.bat && python .\NvStrapsReBar\ReBarDxe\buildffs.py RELEASE B
